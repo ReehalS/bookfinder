@@ -1,0 +1,26 @@
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.result-card {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.result-card img {
+  width: 100%;
+  height: auto;
+}
+
+.result-card h3 {
+  margin-top: 10px;
+}
+
+.result-card p {
+  margin-top: 5px;
+}
