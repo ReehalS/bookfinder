@@ -3,10 +3,6 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './results.css';
 
-const apiKey = process.env.REACT_APP_BOOKS_API_KEY;
-
-
-
 function Results({ inputText, printType, filter, sorting }) {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +12,7 @@ function Results({ inputText, printType, filter, sorting }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${newText}&key=${apiKey}`);
+                const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${newText}&key=${process.env.REACT_APP_BOOKS_API_KEY}`);
                 setPosts(response.data.items);
                 
             }
