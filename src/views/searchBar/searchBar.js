@@ -12,47 +12,45 @@ function SearchBar() {
     const [filter, setFilter] = useState('partial');
     const [sorting, setSorting] = useState('relevance');
     const [viewResults, setViewResults] = useState(false);
+    const [key, setKey] = useState(true);
 
     const handleTextChange = (e) => {
-        setViewResults(false);
         setSearchText(e.target.value);
     };
 
     const handlePrintTypeChange = (e) => {
-        setViewResults(false);
         setPrintType(e.target.value);
     }
 
     const handleFilterChange = (e) => {
-        setViewResults(false);
         setFilter(e.target.value);
     }
 
     const handleSortingChange = (e) => {
-        setViewResults(false);
         setSorting(e.target.value);
     }
 
     const handleSearch = () => {
-        console.log('Searching for: '+ searchText); 
-        console.log('Print Type: '+ printType);
-        console.log('Filter: '+ filter);
-        console.log('Sorting: '+ sorting);
+        console.log(searchText);
+        console.log(printType);
+        console.log(filter);
+        console.log(sorting);
         setViewResults(true);
-
+        setKey(!key);
     };
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
+            setViewResults(false);
             handleSearch();
         }
     };
 
     return (
         <div>
-            <div>
+            <div className='searchBox'>
                 <input 
-                    type="text" 
+                    className="textInput" 
                     value={searchText} 
                     onChange={handleTextChange} 
                     onKeyDown={handleKeyPress}
@@ -60,21 +58,19 @@ function SearchBar() {
                     maxLength={100}
                     autoFocus
                     />
-                    
-                <button onClick={handleSearch}>Search</button>
+                <button onClick={handleSearch} className='selectButton'>Search</button>
             </div>
-            <div>
+            <div className='filters'>
                 <label>
                     Print Type:
                     <select
                         name='printType'
-                        defaultValue={printType}
+                        value={printType}
                         onChange={handlePrintTypeChange}
                     >
                         <option value='all'>All</option>
                         <option value='books'>Books</option>
-                        <option value='magazines'>Magazines</option>
-                        
+                        <option value='magazines'>Magazines</option> 
                     </select>
                 </label>
                 <label>
@@ -83,7 +79,6 @@ function SearchBar() {
                         name='filter'
                         value={filter}
                         onChange={handleFilterChange}
-                        
                     >
                         <option value='partial'>Partial</option>
                         <option value='full'>Full</option>
@@ -99,7 +94,6 @@ function SearchBar() {
                         name='sorting'
                         value={sorting}
                         onChange={handleSortingChange}
-                        
                     >
                         <option value='relevance'>Relevance</option>
                         <option value='newest'>Newest</option>
@@ -107,8 +101,9 @@ function SearchBar() {
                 </label>
             </div>
             <div>
-                {viewResults && <Results inputText={searchText} printType={printType} filter={filter} sorting={sorting}/> }
+                {viewResults && <Results key={key} inputText={searchText} printType={printType} filter={filter} sorting={sorting} />}           
             </div>
+            
         </div>
     );
 }

@@ -1,12 +1,49 @@
-label{
+.searchBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1% 0 0 0;
+    height: 10%;
+    color: #FFD717; 
+}
+
+.textInput{
     font-size: 1rem;
-    font-weight: 600;
-    margin: 10px 1;
-    padding: 20px 0;
+    padding: 10px;
+    background-color: #01365e;
+    width: 80%;
+    margin-left: 5%;
+    color: #FFD717; 
+}
+
+.selectButton{
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #01365e;
+    color: #FFD717; 
+    cursor: pointer;
+    width: 8%;
+    margin-right: 5%;
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+}
+
+label{
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 1% 0 1% 5%;
+    color: #FFD717; 
+    
 }
 
 select{
     font-size: 1rem;
     padding: 10px;
-    border: 1px solid #e9ecef;
+    background-color: #01365e;
+    margin-left: 10px;
+    color: #FFD717; 
 }
