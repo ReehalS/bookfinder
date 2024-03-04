@@ -3,17 +3,18 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './results.css';
 
-function Results({ inputText, printType, filter, sorting }) {
+function Results(props) {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
-    const newText = inputText.replace(/\s/g, '+');
+    const newSearchText = props.inputText.replace(/\s/g, '+');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${newText}&key=${process.env.REACT_APP_BOOKS_API_KEY}`);
+                const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${newSearchText}&filter=${props.filter}&printType=${props.printType}&orderBy=${props.sorting}&key=${process.env.REACT_APP_BOOKS_API_KEY}`);
                 setPosts(response.data.items);
+                console.log(response.data.items);
                 
             }
             catch (error) {

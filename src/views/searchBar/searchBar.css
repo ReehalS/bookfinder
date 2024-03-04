@@ -1,7 +1,7 @@
 .searchBox{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin: 1% 0 0 0;
     height: 10%;
@@ -22,9 +22,8 @@
     padding: 10px;
     background-color: #01365e;
     color: #FFD717; 
-    cursor: pointer;
-    width: 8%;
-    margin-right: 5%;
+    width: 90px;
+    margin-left: 1%;
 }
 
 .filters{
@@ -46,4 +45,29 @@ select{
     background-color: #01365e;
     margin-left: 10px;
     color: #FFD717; 
+}
+
+@media (max-width: 768px) {
+    .searchBox{
+        
+    }
+    .textInput{
+        width: 70%;
+        margin: 1% 0 1% 0;
+    }
+    .selectButton{
+        width: 20%;
+        margin: 1% 2% 1% 0;
+    }
+    .filters{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    label{
+        margin: 1% 0 1% 0;
+    }
+    select{
+        margin: 1% 0 1% 0;
+    }
 }
