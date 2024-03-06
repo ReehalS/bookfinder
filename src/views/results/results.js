@@ -29,6 +29,7 @@ function Results(props) {
     function Card(props) {
 
         const altText = 'Book cover for ' + props.bookName + " by " + props.authors;
+        
 
         return (
           <div className='card'>
